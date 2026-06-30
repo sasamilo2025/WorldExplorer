@@ -1,0 +1,127 @@
+.hero {
+  height: 90vh;
+  background: linear-gradient(to right, #1e3c72, #2a5298);
+}
+
+h1, h2 {
+  font-weight: 600;
+}
+/*
+        Update the card properties
+*/
+    .card {
+        transition: 0.3s;
+        background: rgba(255, 255, 255, 0.8);
+        backdrop-filter: blur(10px);
+        border: none;
+}    
+    .card:hover {
+  transform: scale(1.05);
+}
+
+/*
+        Update the Hero Section
+*/
+/* .hero {
+    height: 90vh;
+    background: linear-gradient(135deg, #1e3c72, #2a5298, #00c6ff);
+    background-size: 200% 200%;
+    animation: gradientMove 8s ease infinite;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+} */
+/* ============================
+   RESPONSIVE HERO SECTION
+   Works across all devices
+============================= */
+
+.hero {
+    min-height: 90vh;   /* allows growth on small screens */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 60px 20px; /* prevents text touching edges on phones */
+}
+.hero::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 90vh;
+    background: rgba(0, 0, 0, 0.3);
+    z-index: 1;
+}
+
+.hero > div {
+    position: relative;
+    z-index: 2;
+}
+/*
+    end of Hero Section 
+*/
+body
+{
+    background-color: #f8f9fa;
+}
+/*
+        upgrade homePage
+*/
+@keyframes gradientMove {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+/*
+    Button Animation
+*/
+  button, .btn {
+    transition: all 0.3s ease;
+}
+
+button:hover, .btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+}
+/* button {
+  transition: 0.3s;
+}
+/* =========================================
+   FEATURE SECTION ENHANCEMENTS
+   Improves spacing and hover effect
+========================================= */
+
+.card {
+    transition: all 0.3s ease;
+}
+
+/* Hover effect for feature cards */
+.card:hover {
+    transform: translateY(-8px);
+}
+/* ============================
+   MOBILE OPTIMIZATION
+============================= */
+
+@media (max-width: 768px) {
+
+    .hero h1 {
+        font-size: 2.5rem;
+    }
+
+    .hero p {
+        font-size: 1.1rem;
+    }
+}
+/* ============================
+   SEARCH RESULT CARDS
+============================= */
+
+.card img {
+    border-radius: 8px;
+}
+

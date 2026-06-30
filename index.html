@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <title>World Explorer</title>
+
+<!--
+    THE FOLLOWING LINKS 
+            are the included in all html files
+            so all PAGES of thus webSite are consistent
+-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+   
+
+</head>
+<body>
+<!--
+    follow is the NAVBAR which is reused in all PAGES
+-->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+<div class="container-fluid">
+    <a class="navbar-brand" href="index.html">World Explorer</a>
+
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navMenu">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="search.html">Search</a></li>
+        <li class="nav-item"><a class="nav-link" href="stats.html">Stats</a></li>
+        <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+      </ul>
+    </div>
+  </div>
+</nav> 
+<!--
+        the Hero Section CSS
+-->
+<div class="hero text-center text-white d-flex align-items-center justify-content-center">
+    <div>
+        <h1 class="display-4">🌍 World Explorer</h1>
+        <p class="lead">
+            Discover countries, cultures and statistics from around the world.
+        </p>
+
+        <a href="search.html" class="btn btn-light btn-lg">
+            Start Exploring
+        </a>
+    </div>
+</div>
+
+<!-- =============================== FEATURED EXPLORE SECTION ===============
+            This section introduces main features of the World Explorer website -->
+
+<section class="container py-5">
+
+<!-- Section Title -->
+<div class="text-center mb-5">
+    <h2>Explore the World</h2>
+    <p class="text-muted">
+        Start your journey by selecting a feature below
+    </p>
+</div>
+
+<!-- Cards Row -->
+<div class="row g-4">
+
+    <!-- Card 1: Countries -->
+
+    <div class="col-md-4">
+        <div class="card text-center p-4 h-100">
+
+            <!-- Icon / Title -->
+            <h3>🌎 Countries</h3>
+
+            <!-- Description -->
+            <p>
+                Discover information about countries around the world including flags, capitals, and population.
+            </p>
+
+            <!-- Button -->
+            <a href="search.html" class="btn btn-primary">
+                Explore Countries
+            </a>
+
+        </div>
+    </div>
+
+    <!-- Card 2: Statistics -->
+    <div class="col-md-4">
+        <div class="card text-center p-4 h-100">
+
+            <h3>📊 Statistics</h3>
+            <p>
+                View global statistics such as population, land area, and economic data.
+            </p>
+
+            <a href="stats.html" class="btn btn-primary">
+                View Stats
+            </a>
+
+        </div>
+    </div>
+
+    <!-- Card 3: Search -->
+    <div class="col-md-4">
+        <div class="card text-center p-4 h-100">
+
+            <h3>🔎 Search</h3>
+            <p>
+                Search for any country and get instant detailed information.
+            </p>
+
+            <a href="search.html" class="btn btn-primary">
+                Start Searching
+            </a>
+
+        </div>
+    </div>
+    </div>
+</section>
+<!--
+        END OF NAVBAR
+===================================================================-->
+
+
+<!----------------------------------------------------------------
+    Following is Boostrap Testing
+-->
+        <button class="btn btn-primary">Bootstrap Test</button>
+<!----------------------------------------------------------------
+    The following link is inclusive in all html files
+        so all PAGES of thus webSite are consistent.
+-->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
