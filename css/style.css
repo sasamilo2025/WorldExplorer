@@ -109,5 +109,34 @@ button:hover, .btn:hover {
 .card img {
     border-radius: 8px;
 }
+/*--------------------------------------------
+    new Modifications
+----------------------------------------------*/
+body {
+    font-family: sans-serif;
+    margin: 0;
+}
 
+.container {
+    padding: 20px;
+}
 
+#searchBox {
+    width: 300px;
+    padding: 10px;
+    margin-bottom: 20px;
+}
+
+.home-link {
+    display: inline-block;
+    margin: 20px 0;
+    padding: 10px 15px;
+    background-color: #1f3c88;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+.home-link:hover {
+    background-color: #2d5bc4;
+}

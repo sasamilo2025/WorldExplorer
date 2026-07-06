@@ -1,82 +1,120 @@
-    // Global array to store all countries
-    let countries = [];
-    //
-    // Load Countries API
-    //
-    async function loadCountries() {
+/*
+    filterCountries function to search for countries based on user input
+    it fetches all countries if not already cached, filters them based on the query,
+    and displays the results. If no countries are found, it shows a message.
+*/
+async function filterCountries() {
+
+    const query = document.getElementById("searchBox").value.trim().toLowerCase();
     const output = document.getElementById("output");
 
-    try {
-
-        const response = await fetch(
-            "https://countries.dev/countries?fields=name,capital,region,population"
-        );
-
-            countries = await response.json();
-             displayCountries([]); 
-
-        } catch (error) {
-            console.error(error);
-            output.textContent = "Something went wrong.";
-        }
-    }
-
-        displayCountries(countries);
-    //
-    // displays a list of all countries 
-    function displayCountries(countryList) {
-        const output = document.getElementById("output");
-        let html = "";
-
-        countryList.forEach(country => {
-            html += `
-                <div style="margin-bottom:15px; padding:10px; border:1px solid #ccc;">
-                    <h3>${country.name}</h3>
-                    <p><b>Capital:</b> ${country.capital}</p>
-                    <p><b>Population:</b> ${country.population.toLocaleString()}</p>
-                </div>
-            `;
-        });
-
-        output.innerHTML = html;
-    }
-    /* -----------------------------------------------------------------
-            Filter Counteries apply Filter Process
-       --------------------------------------------------------------- */
-    function filterCountries() {
-        const searchText = document.getElementById("searchBox").value.toLowerCase();
-        
-        const filteredCountries = countries.filter(country =>
-            country.name.toLowerCase().includes(searchText)
-           
-        );
-    //
-    //  check search/filter if blanks
-    //
-        function filterCountries() {
-
-    const searchText = document
-        .getElementById("searchBox")
-        .value
-        .toLowerCase()
-        .trim();
-
-    // ⭐ NEW RULE: if empty → show nothing
-    if (searchText === "") {
-        displayCountries([]);
+    if (query.length < 2) {
+        output.innerHTML = "Type at least 2 letters...";
         return;
     }
 
-    const filteredCountries = countries.filter(country =>
-        country.name.toLowerCase().includes(searchText)
-    );
-}
-   
-        displayCountries(filteredCountries);  //displays only countries match the searchBox
+    output.innerHTML = "Searching... 🌍";
 
+    const countries = await getAllCountries();
+
+    const filtered = countries.filter(country =>
+        country.name.common.toLowerCase().includes(query)
+    );
+
+    // ✅ STORE HERE (correct scope)
+    window.lastCountries = filtered;
+
+    if (filtered.length === 0) {
+        output.innerHTML = "No countries found ❌";
+        return;
     }
-    /* After Page is loaded, call loadCountries function
-    //  and the url-data will be stored in memeory
-    *///////////////////////////////////////////////////
-        window.onload = loadCountries;
-    //
+
+    displayCountries(filtered);
+}
+
+function displayCountries(countries) {
+
+    const output = document.getElementById("output");
+
+    output.innerHTML = countries.map(country => {
+
+        const population = country.population
+            ? country.population.toLocaleString()
+            : "N/A";
+
+        const capital = country.capital?.[0] || "N/A";
+        const flag = country.flags?.svg || "";
+
+        return `
+        <div class="card mt-3 p-3 shadow-sm country-card"
+             style="cursor:pointer"
+             onclick="openCountryModal('${country.name.common}')">
+
+            <h3>${country.name.common}</h3>
+            <p>🌍 Region: ${country.region || "N/A"}</p>
+            <p>🏛 Capital: ${capital}</p>
+            <p>👥 Population: ${population}</p>
+            ${flag ? `<img src="${flag}" width="120">` : ""}
+
+        </div>
+        `;
+    }).join("");
+}
+/* 
+    modal for country details, including national anthem if available
+----------------------------------------------------------------------*/
+    function openCountryModal(countryName) {
+
+    const countries = window.lastCountries || [];
+
+    // Find the selected country safely
+    const country = countries.find(
+        c => c.name.common === countryName
+    );
+    // If the country is not found, show an error message in the modal
+    // ✅ FIXED: Added check for undefined country
+    // If the country is not found, show an error message in the modal
+
+        if (!country) {
+            document.getElementById("modalTitle").innerText = "Country not found";
+
+            document.getElementById("modalBody").innerHTML = `
+                <p style="color:red;">
+                    ⚠️ Sorry, this country data is not available.
+                 </p>
+        `;
+
+        const modal = new bootstrap.Modal(
+        document.getElementById("countryModal")
+        );
+
+        modal.show();
+
+        return;
+        }
+
+         const population = country.population
+        ? country.population.toLocaleString()
+        : "N/A";
+
+        const capital = country.capital?.[0] || "N/A";
+        const region = country.region || "N/A";
+
+        document.getElementById("modalTitle").innerText = country.name.common;
+
+        document.getElementById("modalBody").innerHTML = `
+        <div>
+            <img src="${country.flags.svg}" width="140" style="margin-bottom:10px">
+
+            <p><strong>Capital:</strong> ${capital}</p>
+            <p><strong>Region:</strong> ${region}</p>
+            <p><strong>Population:</strong> ${population}</p>
+        </div>
+        `;
+
+        const modal = new bootstrap.Modal(
+        document.getElementById("countryModal")
+        );
+
+        modal.show();
+}
