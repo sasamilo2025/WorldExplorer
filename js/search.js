@@ -1,3 +1,6 @@
+//
+    let lastCountries = [];
+//
 /*
     filterCountries function to search for countries based on user input
     it fetches all countries if not already cached, filters them based on the query,
@@ -31,6 +34,41 @@ async function filterCountries() {
 
     displayCountries(filtered);
 }
+/*
+    Helper function:
+    Formats population numbers with commas.
+    Example:
+    1234567 → 1,234,567
+*/
+function getPopulation(country) {
+
+    return country.population
+        ? country.population.toLocaleString()
+        : "N/A";
+}
+
+/*
+    Helper function:
+    Returns the first capital city.
+    Some countries do not have capitals,
+    so we provide a safe fallback.
+*/
+function getCapital(country) {
+
+    return country.capital?.[0] || "N/A";
+}
+
+
+/*
+    Helper function:
+    Returns the country flag image.
+    Some countries may not have an SVG flag.
+*/
+function getFlag(country) {
+
+    return country.flags?.svg || "";
+}
+/*------------------------------------------------------*/
 
 function displayCountries(countries) {
 
@@ -38,12 +76,10 @@ function displayCountries(countries) {
 
     output.innerHTML = countries.map(country => {
 
-        const population = country.population
-            ? country.population.toLocaleString()
-            : "N/A";
+      const population = getPopulation(country);
 
-        const capital = country.capital?.[0] || "N/A";
-        const flag = country.flags?.svg || "";
+        const capital = getCapital(country);
+        const flag = getFlag(country);
 
         return `
         <div class="card mt-3 p-3 shadow-sm country-card"
@@ -93,18 +129,19 @@ function displayCountries(countries) {
         return;
         }
 
-         const population = country.population
-        ? country.population.toLocaleString()
-        : "N/A";
-
-        const capital = country.capital?.[0] || "N/A";
+         const population = getPopulation(country);
+        const capital = getCapital(country);
         const region = country.region || "N/A";
+        const flag = getFlag(country);
+
 
         document.getElementById("modalTitle").innerText = country.name.common;
 
         document.getElementById("modalBody").innerHTML = `
         <div>
-            <img src="${country.flags.svg}" width="140" style="margin-bottom:10px">
+            ${getFlag(country)
+            ? `<img src="${getFlag(country)}" width="140">`
+            : ""}
 
             <p><strong>Capital:</strong> ${capital}</p>
             <p><strong>Region:</strong> ${region}</p>

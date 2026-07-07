@@ -125,6 +125,14 @@
     </div>
 
 </div>
+<!------------------------------------------
+        return to Home Page link
+-------------------------------------------> 
+    <p>
+        <a class="home-link" href="index.html">
+            ← Return to Home Page
+        </a>
+    </p>
 
 <!--=========================================================
     FOOTER
@@ -150,6 +158,74 @@
 
 <!-- New Countries page logic...Calls openCountryModal(). -->
 <script src="js/countries.js"></script>
+
+<!-- ==========================================================
+     COUNTRY DETAILS MODAL
+     This Bootstrap modal will display detailed information
+     about the country selected by the user.
+=========================================================== -->
+
+<div
+    class="modal fade"
+    id="countryModal"
+    tabindex="-1"
+    aria-labelledby="countryModalLabel"
+    aria-hidden="true">
+
+    <div class="modal-dialog modal-lg">
+
+        <div class="modal-content">
+
+            <!-- Modal Header -->
+            <div class="modal-header">
+
+                <h3
+                    class="modal-title"
+                    id="countryModalLabel">
+
+                    🌍 Country Details
+
+                </h3>
+
+                <button
+                    type="button"
+                    class="btn-close"
+                    data-bs-dismiss="modal">
+                </button>
+
+            </div>
+
+            <!-- Modal Body -->
+            <div
+                class="modal-body"
+                id="countryModalBody">
+
+                <p>
+                    Country information will appear here...
+                </p>
+
+            </div>
+
+            <!-- Modal Footer -->
+            <div class="modal-footer">
+
+                <button
+                    type="button"
+                    class="btn btn-secondary"
+                    data-bs-dismiss="modal">
+
+                    Close
+
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+    
 
 </body>
 </html>

@@ -33,13 +33,6 @@ async function loadCountries() {
 
      localeCompare() correctly compares text in
      different languages.
-
-     Example:
-
-     Australia
-     Brazil
-     Japan
-     Samoa
     -----------------------------------------------------*/
 
     countries.sort((a, b) =>
@@ -63,15 +56,15 @@ async function loadCountries() {
      one large HTML string.
     -----------------------------------------------------*/
     
-    const html = countries.map(country => `
-
-        <div class="col-md-4">
+    const html = countries.map((country, index) => `
+      
+        <div class="card country-card h-100 shadow-sm">
 
             <div class="card h-100 shadow-sm">
 
                 <img
                     src="${country.flags?.png ?? country.flags?.svg ?? "https://via.placeholder.com/150"}"
-                    class="card-img-top"
+                    class="card-img-top country-flag"
                     alt="${country.name.common} Flag">
 
                 <div class="card-body">
@@ -83,29 +76,25 @@ async function loadCountries() {
                     </h5>
 
                     <p>
-
-                        <strong>Capital:</strong>
-
-                        ${country.capital?.[0] || "N/A"}
-
+                         🏛 
+                        <strong>
+                            ${country.capital?.[0] || "N/A"}
+                        </strong>
                     </p>
 
                     <p>
-
-                        <strong>Region:</strong>
-
-                        ${country.region}
-
+                        🌏 
+                        <span class="badge bg-info text-dark">
+                            ${country.region || "Unknown"}
+                        </span>
                     </p>
 
-                    <button
-                        class="btn btn-primary"
+                        <button class="btn btn-primary"
+                        onclick="openCountryModal(${index})">
 
-                        onclick="openCountryModal('${country.name.common}')">
+                        🔍 View Details
 
-                        View Details
-
-                    </button>
+                        </button>
 
                 </div>
 
@@ -127,9 +116,17 @@ async function loadCountries() {
 
     container.innerHTML = html;
 
+/*
+-------------------------------------------------------
+Save the currently displayed countries.
+
+Other JavaScript files (such as modal.js)
+can access this same list without loading
+or searching the data again.
+-------------------------------------------------------
+*/
+    window.lastCountries = countries;
 }
-
-
 /*---------------------------------------------------------
  STEP 5
 
