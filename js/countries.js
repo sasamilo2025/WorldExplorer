@@ -58,12 +58,12 @@ async function loadCountries() {
     
     const html = countries.map((country, index) => `
       
-        <div class="card country-card h-100 shadow-sm">
+        <div class="col-12 col-sm-6 col-lg-4 col-xl-3">
 
-            <div class="card h-100 shadow-sm">
+            <div class="card country-card h-100 shadow-sm">
 
-                <img
-                    src="${country.flags?.png ?? country.flags?.svg ?? "https://via.placeholder.com/150"}"
+                   <img
+                    src="${country.flags?.svg || "assets/images/no-flag.jpg"}"
                     class="card-img-top country-flag"
                     alt="${country.name.common} Flag">
 
@@ -75,19 +75,6 @@ async function loadCountries() {
 
                     </h5>
 
-                    <p>
-                         🏛 
-                        <strong>
-                            ${country.capital?.[0] || "N/A"}
-                        </strong>
-                    </p>
-
-                    <p>
-                        🌏 
-                        <span class="badge bg-info text-dark">
-                            ${country.region || "Unknown"}
-                        </span>
-                    </p>
 
                         <button class="btn btn-primary"
                         onclick="openCountryModal(${index})">

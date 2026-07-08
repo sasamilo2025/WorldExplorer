@@ -151,13 +151,9 @@ body {
     overflow: hidden;
 }
 
-
 .country-card:hover {
     transform: translateY(-8px);
 }
-
-
-/* Keep country flags consistent */
 
 /* =====================================
    COUNTRY FLAG DISPLAY
@@ -169,5 +165,59 @@ body {
     width: 100%;
     object-fit: contain;
     padding: 10px;
+
+}
+/*=========================================================
+    PHOENIX DETAILS MODAL
+=========================================================*/
+
+#modalFlag {
+
+    max-height: 220px;
+
+    object-fit: contain;
+
+    margin-bottom: 20px;
+
+}
+
+
+#modalDetails {
+
+    font-size: 1rem;
+
+    line-height: 1.8;
+
+}
+
+
+#modalDetails strong {
+
+    display: inline-block;
+
+    width: 130px;
+
+}
+
+
+.modal-content {
+
+    border-radius: 18px;
+
+}
+
+
+.modal-header {
+
+    background: #0d6efd;
+
+    color: white;
+
+}
+
+
+.modal-title {
+
+    font-weight: bold;
 
 }

@@ -1,112 +1,60 @@
-/*
-===========================================================
-Project Phoenix - World Explorer
-File: modal.js
+/*=========================================================
+    PHOENIX DETAILS MODAL
 
-Purpose:
-Display detailed information about the selected country
-inside a Bootstrap modal.
+    Opens the selected country's details.
+=========================================================*/
 
-Author: Sasa Milo
-===========================================================
-*/
-
-/**
- * Opens the Country Details modal.
- *
- * @param {number} index
- * The position of the selected country in
- * window.lastCountries.
- */
 function openCountryModal(index) {
 
-    // --------------------------------------------------
-    // Retrieve the selected country object
-    // --------------------------------------------------
-    const country = window.lastCountries?.[index];
+    // Get the selected country
+    const country = window.lastCountries[index];
 
-    // --------------------------------------------------
     // Safety check
-    // --------------------------------------------------
-    if (!country) {
-        alert("Country data not found.");
-        return;
-    }
+    if (!country) return;
 
-    // --------------------------------------------------
-    // Extract country information
-    // --------------------------------------------------
-    const name = country.name.common;
-    const capital = country.capital?.[0] || "N/A";
-    const region = country.region || "N/A";
-    const population = country.population.toLocaleString();
+    // Country name
+    document.getElementById("modalCountryName").textContent =
+        country.name.common;
 
-    const flag = country.flags?.png || "";
-    const area = country.area
-    ? `${country.area.toLocaleString()} km²`
-    : "N/A";
+    // Flag image
+    document.getElementById("modalFlag").src =
+        country.flags?.svg || "assets/images/no-flag.jpg";
 
-const languages = country.languages
-    ? Object.values(country.languages).join(", ")
-    : "N/A";
+    // Flag description
+    document.getElementById("modalFlag").alt =
+        `${country.name.common} Flag`;
 
-    // --------------------------------------------------
-    // Update modal title
-    // --------------------------------------------------
-    document.getElementById("countryModalLabel").textContent = name;
+    // Country details
+    document.getElementById("modalDetails").innerHTML = `
 
-    // --------------------------------------------------
-    // Build the modal body
-    // --------------------------------------------------
-    document.getElementById("countryModalBody").innerHTML = `
+        <p><strong>🏛 Capital:</strong>
+        ${country.capital?.[0] || "N/A"}</p>
 
-        <div class="text-center mb-4">
+        <p><strong>👥 Population:</strong>
+        ${country.population?.toLocaleString() || "N/A"}</p>
 
-            <img
-                src="${flag}"
-                alt="${name} Flag"
-                class="img-fluid rounded shadow"
-                style="max-width:220px;">
+        <p><strong>🌍 Region:</strong>
+        ${country.region || "N/A"}</p>
 
-        </div>
+        <p><strong>📐 Area:</strong>
+        ${country.area || "N/A"}</p>
 
-        <table class="table table-bordered">
+        <p><strong>🗣 Language:</strong>
+        ${country.languages || "N/A"}</p>
 
-            <tr>
-                <th width="35%">🏛 Capital</th>
-                <td>${capital}</td>
-            </tr>
+        <p><strong>💰 Currency:</strong>
+        ${country.currency || "N/A"}</p>
 
-            <tr>
-                <th>🌍 Region</th>
-                <td>${region}</td>
-            </tr>
-
-            <tr>
-                <th>👥 Population</th>
-                <td>${population}</td>
-            </tr>
-
-            <tr>
-                <th>📏 Area</th>
-                <td>${area}</td>
-            </tr>
-
-            <tr>
-                <th>🗣 Languages</th>
-                <td>${languages}</td>
-            </tr>
-
-        </table>
+        <p><strong>📞 Phone:</strong>
+        ${country.phone || "N/A"}</p>
 
     `;
 
-    // --------------------------------------------------
-    // Display Bootstrap modal
-    // --------------------------------------------------
+    // Show Bootstrap modal
     const modal = new bootstrap.Modal(
         document.getElementById("countryModal")
     );
 
     modal.show();
+
 }
