@@ -33,15 +33,6 @@ function openCountryModal(index) {
         <p><strong>👥 Population:</strong>
         ${country.population?.toLocaleString() || "N/A"}</p>
 
-        <p><strong>🌍 Region:</strong>
-        ${country.region || "N/A"}</p>
-
-        <p><strong>📐 Area:</strong>
-        ${country.area || "N/A"}</p>
-
-        <p><strong>🗣 Language:</strong>
-        ${country.languages || "N/A"}</p>
-
         <p><strong>💰 Currency:</strong>
         ${country.currency || "N/A"}</p>
 

@@ -154,6 +154,25 @@ body {
 .country-card:hover {
     transform: translateY(-8px);
 }
+/* =====================================
+   CARD HOVER ANIMATION ENHANCEMENT
+   Applies only to countries.html
+
+   Purpose:
+   - Creates a smooth lift animation.
+   - Gives the interface a professional feel.
+   - Improves user experience without
+     affecting functionality.
+===================================== */
+
+.country-card {
+    height: 100%;
+    border-radius: 15px;
+    overflow: hidden;
+
+    /* Smooth card movement on hover */
+    transition: transform 0.3s ease;
+}
 
 /* =====================================
    COUNTRY FLAG DISPLAY
@@ -220,4 +239,91 @@ body {
 
     font-weight: bold;
 
+}
+/* =====================================
+   COUNTRY FLAG CARD ENHANCEMENT
+   Applies only to countries.html
+
+   Purpose:
+   - Keep all country flag images the same height.
+   - Prevent uneven card sizes caused by
+     different flag proportions.
+   - object-fit keeps the flag image neat
+     inside the fixed image area.
+===================================== */
+
+.country-flag {
+    height: 180px;
+    object-fit: cover;
+}
+/* =====================================
+   CARD SHADOW ENHANCEMENT
+   Applies only to countries.html
+
+   Purpose:
+   - Creates a deeper shadow as the card
+     lifts during hover.
+   - Adds depth and a modern UI feel.
+   - Complements the hover animation.
+===================================== */
+
+.country-card {
+    height: 100%;
+    border-radius: 15px;
+    overflow: hidden;
+
+    /* Smooth hover animation */
+    transition: transform 0.3s ease,
+                box-shadow 0.3s ease;
+}
+
+.country-card:hover {
+    transform: translateY(-8px);
+
+    /* Enhanced shadow while hovering */
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.18);
+}
+/* =====================================
+   FLAG IMAGE HOVER ENHANCEMENT
+   Applies only to countries.html
+
+   Purpose:
+   - Creates a subtle zoom effect when
+     hovering over a country card.
+   - Adds a premium interactive feel.
+   - Works together with the lift and
+     shadow animations.
+===================================== */
+
+.country-flag {
+    height: 180px;
+    object-fit: cover;
+
+    /* Smooth image zoom animation */
+    transition: transform 0.3s ease;
+}
+
+.country-card:hover .country-flag {
+
+    /* Slightly enlarge the flag image */
+    transform: scale(1.05);
+}
+/* =====================================
+   COUNTRY TITLE ENHANCEMENT
+   Applies only to countries.html
+
+   Purpose:
+   - Makes the country name the visual
+     focus of each card.
+   - Improves readability.
+   - Creates consistent spacing between
+     the title and action button.
+===================================== */
+
+.country-card .card-title {
+    font-weight: 700;
+    font-size: 1.2rem;
+    margin-bottom: 0.2rem;
+    text-align: center;
+    min-height: 1.2rem;
 }

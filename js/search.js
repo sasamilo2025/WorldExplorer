@@ -70,31 +70,41 @@ function getFlag(country) {
 }
 /*------------------------------------------------------*/
 
-function displayCountries(countries) {
+    function displayCountries(countries) {
 
     const output = document.getElementById("output");
 
     output.innerHTML = countries.map(country => {
 
-      const population = getPopulation(country);
-
-        const capital = getCapital(country);
         const flag = getFlag(country);
 
         return `
-        <div class="card mt-3 p-3 shadow-sm country-card"
+        <div class="card mt-3 p-3 shadow-sm country-card text-center"
              style="cursor:pointer"
              onclick="openCountryModal('${country.name.common}')">
 
-            <h3>${country.name.common}</h3>
-            <p>🌍 Region: ${country.region || "N/A"}</p>
-            <p>🏛 Capital: ${capital}</p>
-            <p>👥 Population: ${population}</p>
-            ${flag ? `<img src="${flag}" width="120">` : ""}
+            <h3 class="mb-3">
+                ${country.name.common}
+            </h3>
+
+            ${
+                flag
+                    ? `<img src="${flag}"
+                            width="140"
+                            height="90"
+                            class="mx-auto d-block mb-3">`
+                    : ""
+            }
+
+            <button class="btn btn-primary">
+                View Details
+            </button>
 
         </div>
         `;
+
     }).join("");
+
 }
 /* 
     modal for country details, including national anthem if available
@@ -106,7 +116,13 @@ function displayCountries(countries) {
     // Find the selected country safely
     const country = countries.find(
         c => c.name.common === countryName
+
+        //console.log("Country selected:", country),
     );
+
+        console.log("Country selected:", 
+        country),onsole.log(country);
+
     // If the country is not found, show an error message in the modal
     // ✅ FIXED: Added check for undefined country
     // If the country is not found, show an error message in the modal
@@ -130,28 +146,36 @@ function displayCountries(countries) {
         }
 
          const population = getPopulation(country);
-        const capital = getCapital(country);
-        const region = country.region || "N/A";
-        const flag = getFlag(country);
+         const capital = getCapital(country);
+         const flag = getFlag(country);
 
-
+             
         document.getElementById("modalTitle").innerText = country.name.common;
 
         document.getElementById("modalBody").innerHTML = `
-        <div>
-            ${getFlag(country)
-            ? `<img src="${getFlag(country)}" width="140">`
-            : ""}
+        <div class="text-center">
 
-            <p><strong>Capital:</strong> ${capital}</p>
-            <p><strong>Region:</strong> ${region}</p>
-            <p><strong>Population:</strong> ${population}</p>
-        </div>
-        `;
+        ${flag ? `<img src="${flag}" width="140" class="mb-3">` : ""}
 
-        const modal = new bootstrap.Modal(
-        document.getElementById("countryModal")
-        );
+            <p><strong>🏛 Capital:</strong> ${capital}</p>
+            <p><strong>👥 Population:</strong> ${population}</p>
+            <p><strong>💰 Currency:</strong> ${currency}</p>
+            <p><strong>📞 Phone Code:</strong> ${phone}</p>
 
-        modal.show();
-}
+        ${
+            emblem
+            ? `<h5 class="mt-4">National Emblem</h5>
+               <img src="${emblem}" width="120">`
+            : ""
+        }
+
+         ${
+        globe
+            ? `<h5 class="mt-4">Location</h5>
+               <img src="${globe}" width="180">`
+            : ""
+        }
+
+    </div>
+    `;
+    }

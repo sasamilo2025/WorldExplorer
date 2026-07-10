@@ -62,30 +62,30 @@ async function loadCountries() {
 
             <div class="card country-card h-100 shadow-sm">
 
-                   <img
+            <div class="card-body text-center">
+
+                <h5 class="card-title">
+
+                    ${country.name.common}
+
+                </h5>
+
+                <img
                     src="${country.flags?.svg || "assets/images/no-flag.jpg"}"
-                    class="card-img-top country-flag"
+                    class="country-flag img-fluid"
                     alt="${country.name.common} Flag">
 
-                <div class="card-body">
+                <button
+                    class="btn btn-primary mt-1"
+                    onclick="openCountryModal(${index})">
 
-                    <h5 class="card-title">
+                    🔍 View Details
 
-                        ${country.name.common}
-
-                    </h5>
-
-
-                        <button class="btn btn-primary"
-                        onclick="openCountryModal(${index})">
-
-                        🔍 View Details
-
-                        </button>
-
-                </div>
+                </button>
 
             </div>
+
+        </div>
 
         </div>
 

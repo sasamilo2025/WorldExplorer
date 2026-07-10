@@ -41,16 +41,19 @@ async function getAllCountries() {
         // Convert response to JSON
         const data = await response.json();
 
-
+        // Debugging: Log the raw API response
+        console.log(data[0]);
 
         // Convert API structure into Project Phoenix structure
         countriesCache = data
 
             // Remove incomplete records
-            .filter(country =>
-                country.name
-            )
 
+            .filter(country =>
+                 country.name &&
+                  isValidImageUrl(country.media?.flag) &&
+                  country.capital
+        )   
 
             // Transform fields
             .map(country => ({
