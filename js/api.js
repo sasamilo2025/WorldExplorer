@@ -42,7 +42,7 @@ async function getAllCountries() {
         const data = await response.json();
 
         // Debugging: Log the raw API response
-        console.log(data[0]);
+        //console.log(data[0]);
 
         // Convert API structure into Project Phoenix structure
         countriesCache = data

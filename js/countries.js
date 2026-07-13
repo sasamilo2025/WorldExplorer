@@ -9,7 +9,19 @@
  Reuse code whenever possible.
 ---------------------------------------------------------*/
 
-async function loadCountries() {
+    function getFlag(country) {
+
+               return country.flags?.svg || "/images/no-flag.jpg";
+    }  // <-- End of getFlag()
+
+    function getCapital(country) {
+
+    return country.capital?.[0] || "📍 Not Available";
+
+}  // <-- End of getCapital()
+    
+
+    async function loadCountries() {
 
     // Find the HTML container where all cards will appear
     const container = document.getElementById("countriesContainer");
@@ -55,6 +67,9 @@ async function loadCountries() {
      Finally join() combines every card into
      one large HTML string.
     -----------------------------------------------------*/
+    function renderCountries(countries) {
+
+    const countriesContainer = document.getElementById("countriesContainer");
     
     const html = countries.map((country, index) => `
       
@@ -66,18 +81,18 @@ async function loadCountries() {
 
                 <h5 class="card-title">
 
-                    ${country.name.common}
+                     ${country.name.common}
 
                 </h5>
 
-                <img
-                    src="${country.flags?.svg || "assets/images/no-flag.jpg"}"
-                    class="country-flag img-fluid"
-                    alt="${country.name.common} Flag">
-
-                <button
-                    class="btn btn-primary mt-1"
-                    onclick="openCountryModal(${index})">
+                    <img
+                        src="${getFlag(country)}"
+                        class="country-flag img-fluid"
+                        alt="${country.name.common} Flag">                  
+  
+                <button                   
+                         class="btn btn-primary mt-1"
+                         onclick="openCountryModal(${index})">
 
                     🔍 View Details
 
@@ -91,17 +106,34 @@ async function loadCountries() {
 
     `).join("");
 
+            countriesContainer.innerHTML = html;
+        /*
+            -------------------------------------------------------
+            Save the currently displayed countries.
 
-    /*-----------------------------------------------------
-     STEP 4
-     Display everything.
+            Other JavaScript files (such as modal.js)
+            can access this same list without loading
+            or searching the data again.
+            -------------------------------------------------------
+        */
+            window.lastCountries = countries;
 
-     We only update the HTML once.
+    }  // <-- End of renderCountries()
 
-     This is faster than adding one card at a time.
-    -----------------------------------------------------*/
+    /*---------------------------------------------------------
+ STEP 4
 
-    container.innerHTML = html;
+ Render all country cards.
+
+ Instead of creating HTML inside loadCountries(),
+ we let renderCountries() handle that job.
+
+ This keeps rendering in ONE place only.
+---------------------------------------------------------*/
+
+    renderCountries(countries);
+
+}   // ← End of loadCountries()
 
 /*
 -------------------------------------------------------
@@ -112,8 +144,8 @@ can access this same list without loading
 or searching the data again.
 -------------------------------------------------------
 */
-    window.lastCountries = countries;
-}
+   // window.lastCountries = countries;
+
 /*---------------------------------------------------------
  STEP 5
 
@@ -122,4 +154,21 @@ or searching the data again.
  This is the entry point for this page.
 ---------------------------------------------------------*/
 
-loadCountries();
+// loadCountries(); 
+
+/*---------------------------------------------------------
+ PAGE INITIALIZATION CHECK
+
+ Only run loadCountries() when the Countries page exists.
+
+ Search page can reuse renderCountries()
+ without automatically loading the full country list.
+---------------------------------------------------------*/
+
+const countriesContainer = document.getElementById("countriesContainer");
+
+if (countriesContainer) {
+    loadCountries();
+}
+
+

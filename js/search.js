@@ -6,6 +6,7 @@
     it fetches all countries if not already cached, filters them based on the query,
     and displays the results. If no countries are found, it shows a message.
 */
+
 async function filterCountries() {
 
     const query = document.getElementById("searchBox").value.trim().toLowerCase();
@@ -32,7 +33,8 @@ async function filterCountries() {
         return;
     }
 
-    displayCountries(filtered);
+    //displayCountries(filtered);
+      renderCountries(filtered);
 }
 /*
     Helper function:
@@ -44,9 +46,8 @@ function getPopulation(country) {
 
     return country.population
         ? country.population.toLocaleString()
-        : "N/A";
+        : "👥 Not Available";
 }
-
 /*
     Helper function:
     Returns the first capital city.
@@ -55,29 +56,52 @@ function getPopulation(country) {
 */
 function getCapital(country) {
 
-    return country.capital?.[0] || "N/A";
+    return country.capital?.[0] || "📍 Not Available";
 }
-
 
 /*
     Helper function:
     Returns the country flag image.
     Some countries may not have an SVG flag.
 */
-function getFlag(country) {
+    function getFlag(country) {
+                
+            console.log("getFlag for:", country.name.common);
 
-    return country.flags?.svg || "";
+        if (country.name.common === "Afghanistan") {
+        console.log(">>> Using placeholder <<<");
+        return "images/no-flag.jpg";
+    }
+
+        console.log(">>> Using real flag <<<");
+        return country.flags?.svg;
+
+    }
+
+/*
+    Helper function:
+    Returns the Phone Code.
+    Some countries may not have phonre codes, so we provide a safe fallback.
+*/
+    function getPhone(country) {
+    return country.phone || "☎️ Not Available";
 }
+    function getCurrency(country) {
+    return country.currency || "💰 Not Available";
+}
+         
 /*------------------------------------------------------*/
 
     function displayCountries(countries) {
 
     const output = document.getElementById("output");
 
+    
     output.innerHTML = countries.map(country => {
 
         const flag = getFlag(country);
 
+               
         return `
         <div class="card mt-3 p-3 shadow-sm country-card text-center"
              style="cursor:pointer"
@@ -99,7 +123,7 @@ function getFlag(country) {
             <button class="btn btn-primary">
                 View Details
             </button>
-
+        
         </div>
         `;
 
@@ -117,11 +141,7 @@ function getFlag(country) {
     const country = countries.find(
         c => c.name.common === countryName
 
-        //console.log("Country selected:", country),
     );
-
-        console.log("Country selected:", 
-        country),onsole.log(country);
 
     // If the country is not found, show an error message in the modal
     // ✅ FIXED: Added check for undefined country

@@ -18,7 +18,7 @@ function openCountryModal(index) {
 
     // Flag image
     document.getElementById("modalFlag").src =
-        country.flags?.svg || "assets/images/no-flag.jpg";
+        country.flags?.svg || "images/no-flag.jpg";
 
     // Flag description
     document.getElementById("modalFlag").alt =
