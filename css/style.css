@@ -199,32 +199,13 @@ body {
     margin-bottom: 20px;
 
 }
-
-
-#modalDetails {
-
-    font-size: 1rem;
-
-    line-height: 1.8;
-
-}
-
-
-#modalDetails strong {
-
-    display: inline-block;
-
-    width: 130px;
-
-}
-
+/* Country Details Modal, defined in search.html */
 
 .modal-content {
 
     border-radius: 18px;
 
 }
-
 
 .modal-header {
 
@@ -240,6 +221,35 @@ body {
     font-weight: bold;
 
 }
+
+
+.modal-body {
+
+    color: #212529;
+
+    font-size: 1rem;
+
+    line-height: 1.8;
+
+}
+
+/* #modalDetails p { 
+
+
+    /* font-size: 1rem;
+    line-height: 1.8; */
+
+#modalDetails strong {
+
+    display: inline-block;
+
+    width: 130px;
+
+} 
+
+
+
+
 /* =====================================
    COUNTRY FLAG CARD ENHANCEMENT
    Applies only to countries.html

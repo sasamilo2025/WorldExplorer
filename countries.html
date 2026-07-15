@@ -30,7 +30,7 @@
 </head>
 
 <body>
-
+    
 <!--=========================================================
     NAVIGATION BAR
     Reused across the project for consistency.
@@ -88,6 +88,7 @@
 
 </nav>
 
+
 <!--=========================================================
     PAGE HEADER
 ==========================================================-->
@@ -107,6 +108,30 @@
 
 </div>
 
+<!-- =====================================================
+      COUNTRY SEARCH
+
+     Allows users to quickly search for countries.
+
+     Search functionality will be connected
+     during Mission 6.8 Phase 2..
+    ====================================================== -->
+
+     <div class="row mb-4">
+
+        <div class="col-md-3 mx-auto">
+
+            <input
+                type="text"
+                id="countrySearch"
+                class="form-control"
+                placeholder="🔍 Enter country name..."
+        >
+
+        </div>
+
+    </div> 
+
 <!--=========================================================
     COUNTRY CARDS
 
@@ -125,69 +150,9 @@
     </div>
 
 </div>
-<!--=========================================================
-    PHOENIX DETAILS MODAL
+<!--
 
-    Hidden by default.
-    JavaScript will fill in the selected country's data.
-==========================================================-->
-
-<div
-    class="modal fade"
-    id="countryModal"
-    tabindex="-1"
-    aria-hidden="true">
-
-    <div class="modal-dialog modal-lg modal-dialog-centered">
-
-        <div class="modal-content">
-
-            <div class="modal-header">
-
-                <h4
-                    class="modal-title"
-                    id="modalCountryName">
-
-                    Country
-
-                </h4>
-
-                <button
-                    type="button"
-                    class="btn-close"
-                    data-bs-dismiss="modal">
-
-                </button>
-
-            </div>
-
-            <div class="modal-body">
-
-                <div class="text-center mb-4">
-
-                    <img
-                        id="modalFlag"
-                        src=""
-                        class="img-fluid"
-                        style="max-height:200px;">
-
-                </div>
-
-                <div id="modalDetails">
-
-                    <!-- JavaScript inserts country details here -->
-
-                </div>
-
-            </div>
-
-        </div>
-
-    </div>
-
-</div>
-
-
+-->
 <!------------------------------------------
         return to Home Page link
 -------------------------------------------> 
@@ -215,6 +180,9 @@
 
 <!-- API functions, Wrapper -->
 <script src="js/api.js"></script>
+
+<!-- countries rendered functions -->
+<script src="js/countryRenderer.js"></script>
 
 <!-- Existing Modal functions -->
 <script src="js/modal.js"></script>
@@ -288,7 +256,6 @@
     </div>
 
 </div>
-    
 
 </body>
 </html>

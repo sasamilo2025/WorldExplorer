@@ -9,11 +9,6 @@
  Reuse code whenever possible.
 ---------------------------------------------------------*/
 
-    function getFlag(country) {
-
-               return country.flags?.svg || "/images/no-flag.jpg";
-    }  // <-- End of getFlag()
-
     function getCapital(country) {
 
     return country.capital?.[0] || "📍 Not Available";
@@ -49,7 +44,8 @@
 
     countries.sort((a, b) =>
         a.name.common.localeCompare(b.name.common)
-    );
+
+    ); // <-- End of sort()
 
 
     /*-----------------------------------------------------
@@ -67,58 +63,6 @@
      Finally join() combines every card into
      one large HTML string.
     -----------------------------------------------------*/
-    function renderCountries(countries) {
-
-    const countriesContainer = document.getElementById("countriesContainer");
-    
-    const html = countries.map((country, index) => `
-      
-        <div class="col-12 col-sm-6 col-lg-4 col-xl-3">
-
-            <div class="card country-card h-100 shadow-sm">
-
-            <div class="card-body text-center">
-
-                <h5 class="card-title">
-
-                     ${country.name.common}
-
-                </h5>
-
-                    <img
-                        src="${getFlag(country)}"
-                        class="country-flag img-fluid"
-                        alt="${country.name.common} Flag">                  
-  
-                <button                   
-                         class="btn btn-primary mt-1"
-                         onclick="openCountryModal(${index})">
-
-                    🔍 View Details
-
-                </button>
-
-            </div>
-
-        </div>
-
-        </div>
-
-    `).join("");
-
-            countriesContainer.innerHTML = html;
-        /*
-            -------------------------------------------------------
-            Save the currently displayed countries.
-
-            Other JavaScript files (such as modal.js)
-            can access this same list without loading
-            or searching the data again.
-            -------------------------------------------------------
-        */
-            window.lastCountries = countries;
-
-    }  // <-- End of renderCountries()
 
     /*---------------------------------------------------------
  STEP 4
