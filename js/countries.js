@@ -79,27 +79,6 @@
 
 }   // ← End of loadCountries()
 
-/*
--------------------------------------------------------
-Save the currently displayed countries.
-
-Other JavaScript files (such as modal.js)
-can access this same list without loading
-or searching the data again.
--------------------------------------------------------
-*/
-   // window.lastCountries = countries;
-
-/*---------------------------------------------------------
- STEP 5
-
- Run automatically when the page opens.
-
- This is the entry point for this page.
----------------------------------------------------------*/
-
-// loadCountries(); 
-
 /*---------------------------------------------------------
  PAGE INITIALIZATION CHECK
 

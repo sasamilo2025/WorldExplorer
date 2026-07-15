@@ -175,20 +175,23 @@
 <!-- Bootstrap JavaScript -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
-<!-- Existing API functions ..Data is Loaded Her
-<script src="data/countries.js"></script> -->
-
-<!-- API functions, Wrapper -->
+<!-- API Layer -->
 <script src="js/api.js"></script>
 
-<!-- countries rendered functions -->
+<!-- Local backup data / Page Logic -->
+<script src="js/countries.js"></script>
+
+<!-- Search / Filtering -->
+<script src="js/search.js"></script>
+
+<!-- Additional country information -->
+<script src="js/anthemData.js"></script>
+
+<!-- Render country cards -->
 <script src="js/countryRenderer.js"></script>
 
-<!-- Existing Modal functions -->
+<!-- Country Details Modal -->
 <script src="js/modal.js"></script>
-
-<!-- New Countries page logic...Calls openCountryModal(). -->
-<script src="js/countries.js"></script>
 
 <!-- ==========================================================
      COUNTRY DETAILS MODAL
@@ -209,7 +212,7 @@
 
             <!-- Modal Header -->
             <div class="modal-header">
-
+            <!--    
                 <h3
                     class="modal-title"
                     id="countryModalLabel">
@@ -217,6 +220,13 @@
                     🌍 Country Details
 
                 </h3>
+            -->
+                 <h3
+                    class="modal-title">
+
+                    🌍 Country Details
+
+                </h3>   
 
                 <button
                     type="button"
@@ -226,7 +236,7 @@
 
             </div>
 
-            <!-- Modal Body -->
+            <!-- Modal Body 
             <div
                 class="modal-body"
                 id="countryModalBody">
@@ -235,7 +245,27 @@
                     Country information will appear here...
                 </p>
 
+            </div> -->
+
+            <!-- Modal Body -->
+        <div class="modal-body text-center">
+
+            <img
+                id="modalFlag"
+                src=""
+                alt="Country Flag"
+                class="img-fluid mb-3"
+                style="max-height:200px;">
+
+            <h4 id="modalCountryName"></h4>
+
+            <div
+                id="modalDetails"
+                class="text-start mt-3">
+
             </div>
+
+        </div>
 
             <!-- Modal Footer -->
             <div class="modal-footer">
@@ -251,11 +281,11 @@
 
             </div>
 
-        </div>
+        </div> 
 
-    </div>
+    </div> 
 
-</div>
+</div> 
 
 </body>
 </html>
