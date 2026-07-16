@@ -9,7 +9,8 @@
 
 async function filterCountries() {
 
-    const query = document.getElementById("searchBox").value.trim().toLowerCase();
+    // const query = document.getElementById("searchBox").value.trim().toLowerCase();
+    const query = document.getElementById("countrySearch").value.trim().toLowerCase();
    // const output = document.getElementById("output");
     const countriesContainer =
     document.getElementById("countriesContainer");
