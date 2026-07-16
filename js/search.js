@@ -10,7 +10,21 @@
 async function filterCountries() {
 
     // const query = document.getElementById("searchBox").value.trim().toLowerCase();
-    const query = document.getElementById("countrySearch").value.trim().toLowerCase();
+    //const query = document.getElementById("countrySearch").value.trim().toLowerCase();
+
+    const searchElement =
+    document.getElementById("searchInput") ||
+    document.getElementById("searchBox") ||
+    document.getElementById("countrySearch");
+
+    if (!searchElement) {
+    console.log("Search box not found on this page");
+    return;
+    }
+
+    const query = searchElement.value.trim().toLowerCase();
+ 
+
    // const output = document.getElementById("output");
     const countriesContainer =
     document.getElementById("countriesContainer");
