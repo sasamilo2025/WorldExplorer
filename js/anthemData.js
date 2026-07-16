@@ -18,11 +18,7 @@ const nationalAnthems = {
         title: "God Bless Fiji"
     },
 
-    Barbados: {
-        title: "In Plenty and In Time of Need"
-    },
-
-    Australia: {
+     Australia: {
         title: "Advance Australia Fair"
     },
 

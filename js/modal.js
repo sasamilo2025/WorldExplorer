@@ -37,21 +37,17 @@ function openCountryModal(index) {
     document.getElementById("modalDetails")
     );
 
-//     document.getElementById("modalDetails").innerHTML = `
 
-//     <p><strong>🏛 Capital:</strong>
-//     ${country.capital?.[0] || "N/A"}</p>
+/*=========================================================
+    LOOK UP NATIONAL ANTHEM
 
-//     <p><strong>👥 Population:</strong>
-//     ${country.population?.toLocaleString() || "N/A"}</p>
+    Retrieves the anthem title from the
+    Project Phoenix National Identity database.
+=========================================================*/
 
-//     <p><strong>💰 Currency:</strong>
-//     ${country.currency || "N/A"}</p>
+const anthem = nationalAnthems[country.name.common];
+//
 
-//     <p><strong>📞 Phone:</strong>
-//     ${country.phone || "N/A"}</p>
-
-// `;
 /*=========================================================
     NATIONAL IDENTITY
 
@@ -73,38 +69,42 @@ function openCountryModal(index) {
 
 document.getElementById("modalDetails").innerHTML = `
 
+<div class="details-card">
+
     <p>
-        <strong>🏛 Capital:</strong><br>
+        <strong>🏛 Capital:</strong>
         ${country.capital?.[0] || "N/A"}
     </p>
 
     <p>
-        <strong>👥 Population:</strong><br>
+        <strong>👥 Population:</strong>
         ${country.population?.toLocaleString() || "N/A"}
     </p>
 
     <p>
-        <strong>💰 Currency:</strong><br>
+        <strong>💰 Currency:</strong>
         ${country.currency || "N/A"}
     </p>
 
     <p>
-        <strong>📞 Phone:</strong><br>
+        <strong>📞 Phone:</strong>
         ${country.phone || "N/A"}
     </p>
 
-    <hr>
+</div>
 
-    <h5>🎵 National Anthem</h5>
+<hr>
 
-    <p>
-        <em>Currently unavailable.</em>
-    </p>
+<h5>🎵 National Anthem</h5>
 
-    <small class="text-muted">
-        This Project is prepared for future
-        verified national anthem data.
-    </small>
+<p>
+    <em>Currently unavailable.</em>
+</p>
+
+<small class="text-muted">
+    Project Phoenix is prepared for future
+    verified national anthem data.
+</small>
 
 `;
 
